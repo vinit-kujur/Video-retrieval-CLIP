@@ -6,3 +6,8 @@
 2) To run the text query use query_text.py script.
 
 3) To run the image query use the query_image.py script.
+
+TODO:
+* Make the code more readable.
+* Add documentation
+* Add requirements file
