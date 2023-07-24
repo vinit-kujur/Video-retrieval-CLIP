@@ -10,7 +10,7 @@ from PIL import Image
 import pickle
 import argparse
 
-device = "cuda:2" if torch.cuda.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # load model and image preprocessing
 model, preprocess = clip.load("ViT-B/32", device=device, jit=False)

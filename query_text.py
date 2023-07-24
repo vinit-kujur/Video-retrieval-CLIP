@@ -10,7 +10,7 @@ from torch import nn
 import numpy as np
 import pickle
 
-device = "cuda:2" if torch.cuda.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # load model and image preprocessing
 model, preprocess = clip.load("ViT-B/32", device=device, jit=False)
@@ -54,7 +54,9 @@ def calculate_similarity(query, video_features):
         time_stamp = frame_no//25
         minutes = time_stamp // 60
         seconds = time_stamp % 60
-        print(f"{file}, {similarity_sorted[file]}, {minutes}")
+
+        if similarity_sorted[file] > 0.7:
+            print(f"{file}, {similarity_sorted[file]}, Time: {minutes}:{seconds} ")
 
     return similarity
 
@@ -65,6 +67,8 @@ if __name__ == '__main__':
     print("In Main...")
     file_name = "video_meta/wildlife2"
     out_file = file_name + ".pickle"
+    out_file = "video_meta/" + ".pickle"
+
 
     while True:
         query = input("Query: ")

@@ -11,7 +11,7 @@ import numpy as np
 import pickle
 from PIL import Image
 
-device = "cuda:2" if torch.cuda.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
 # load model and image preprocessing
 model, preprocess = clip.load("ViT-B/32", device=device, jit=False)
@@ -65,6 +65,8 @@ if __name__ == '__main__':
     print("In Main...")
     file_name = "video_meta/wildlife2"
     out_file = file_name + ".pickle"
+    out_file = "video_meta/" + ".pickle"
+    
 
     while True:
         image_path = input("Image Path: ")
